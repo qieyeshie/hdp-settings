@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "================     开始启动所有节点服务            ==========="
+echo "================     正在启动Zookeeper               ==========="
+for i in zkpk@master zkpk@slave1 zkpk@slave2
+do
+        ssh $i 'source /etc/profile;/home/zkpk/zookeeper/bin/zkServer.sh start'
+done
+echo "================     正在启动HDFS                    ==========="
+ssh zkpk@master '/home/zkpk/hadoop/sbin/start-dfs.sh'
+echo "================     正在启动YARN                    ==========="
+ssh zkpk@master '/home/zkpk/hadoop/sbin/start-yarn.sh'
+echo "================     正在启动HBASE                   ==========="
+ssh zkpk@master '/home/zkpk/hbase/bin/start-hbase.sh'
+

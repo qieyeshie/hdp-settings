@@ -1,0 +1,16 @@
+JAVA_HOME=/home/zkpk/jdk
+JRE_HOME=/home/zkpk/jdk/jreCLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
+PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+export JAVA_HOME JRE_HOME CLASSPATH PATH
+
+export HADOOP_HOME=/home/zkpk/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+export HBASE_HOME=/home/zkpk/hbase
+export PATH=$PATH:$HBASE_HOME/bin
+
+export ZOOKEEPER_HOME=/home/zkpk/zookeeper
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+
+export PATH=$PATH:/usr/local/bin

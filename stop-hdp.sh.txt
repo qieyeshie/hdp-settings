@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "================     开始关闭所有节点服务            ==========="
+echo "================     正在关闭HBASE                  ==========="
+ssh zkpk@master '/home/zkpk/hbase/bin/stop-hbase.sh'
+echo "================     正在关闭YARN                    ==========="
+ssh zkpk@master '/home/zkpk/hadoop/sbin/stop-yarn.sh'
+echo "================     正在关闭HDFS                    ==========="
+ssh zkpk@master '/home/zkpk/hadoop/sbin/stop-dfs.sh'
+echo "================     正在关闭Zookeeper               ==========="
+for i in zkpk@master zkpk@slave1 zkpk@slave2
+do
+        ssh $i 'source /etc/profile;/home/zkpk/zookeeper/bin/zkServer.sh stop'
+done

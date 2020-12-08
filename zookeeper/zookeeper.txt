@@ -1,0 +1,49 @@
+##配置环境变量
+vi /etc/profile
+#set zookeeper environment
+export ZOOKEEPER_HOME=/usr/hadoop/zookeeper-3.4.11
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+##使环境变量生效
+source /etc/profile
+
+##配置集群
+vi zoo.cfg
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/home/hadoop/hadoop2/zookeeper/data
+dataLogDir=/home/hadoop/hadoop2/zookeeper/logs
+clientPort=2181
+server.1=hadoop01:2888:3888
+server.2=hadoop02:2888:3888
+server.3=hadoop03:2888:3888
+
+##创建文件目录路径
+mkdir -p /home/hadoop/hadoop2/zookeeper/data/
+
+##/home/hadoop/hadoop2/zookeeper/data/myid文件修改
+##hadoop01,/home/hadoop/hadoop2/zookeeper/data/myid修改如下：
+echo '1' > /home/hadoop/hadoop2/zookeeper/data/myid
+##hadoop02,/home/hadoop/hadoop2/zookeeper/data/myid修改如下：
+echo '2' > /home/hadoop/hadoop2/zookeeper/data/myid
+##hadoop03,/home/hadoop/hadoop2/zookeeper/data/myid修改如下：
+echo '3' > /home/hadoop/hadoop2/zookeeper/data/myid
+
+##启动zookeeper
+zkServer.sh start
+
+##查看状态
+zkServer.sh status
+
+
+
+
+
+
+
+
+
+
+
+
+
